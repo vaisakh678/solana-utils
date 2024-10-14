@@ -5,6 +5,7 @@ import { PublicKey } from "@solana/web3.js";
 import { useConnection } from "@solana/wallet-adapter-react";
 import { Separator } from "../../components/ui/separator";
 import Overview from "./components/Overview";
+import History from "./components/History";
 
 const Explorer: React.FC = () => {
 	const { connection } = useConnection();
@@ -13,6 +14,7 @@ const Explorer: React.FC = () => {
 		(async () => {
 			const publicKey = new PublicKey("Bfqoeze6D3kivLpJPmebwwuCwBAVi22Eu32SU55PMm6U");
 			const res = await connection.getAccountInfo(publicKey);
+			console.log("supply: ", await connection.getSupply());
 			console.log(res);
 		})();
 	}, [connection]);
@@ -22,6 +24,7 @@ const Explorer: React.FC = () => {
 			<Input placeholder="Search for blocks, accounts, transactions, programs and tokens" className="py-5" />
 			<Separator className="w-full mt-8" />
 			<Overview />
+			<History />
 		</Content>
 	);
 };

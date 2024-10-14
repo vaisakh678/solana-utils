@@ -56,6 +56,7 @@ export function ThemeProvider({ children, defaultTheme = "system", storageKey = 
 // eslint-disable-next-line react-refresh/only-export-components
 export const useTheme = () => {
 	const context = useContext(ThemeProviderContext);
+	console.log("yoo");
 
 	if (context === undefined) throw new Error("useTheme must be used within a ThemeProvider");
 
