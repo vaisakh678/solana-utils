@@ -8,16 +8,16 @@ import { ThemeProvider } from "./contexts/ThemeProvider";
 
 const App: React.FC = () => {
 	return (
-		<ThemeProvider defaultTheme="light">
-			<Toaster richColors toastOptions={{}} />
-			<ConnectionProvider endpoint="https://api.devnet.solana.com">
-				<WalletProvider wallets={[]}>
-					<WalletModalProvider>
+		<ConnectionProvider endpoint="https://api.devnet.solana.com">
+			<WalletProvider wallets={[]}>
+				<WalletModalProvider>
+					<ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+						<Toaster richColors toastOptions={{}} />
 						<AppRouter />
-					</WalletModalProvider>
-				</WalletProvider>
-			</ConnectionProvider>
-		</ThemeProvider>
+					</ThemeProvider>
+				</WalletModalProvider>
+			</WalletProvider>
+		</ConnectionProvider>
 	);
 };
 

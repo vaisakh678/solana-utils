@@ -1,6 +1,6 @@
-import { useTheme } from "next-themes";
 import React from "react";
-import { MoonStar, Sun } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "../contexts/ThemeProvider";
 
 const ThemeSwitcher: React.FC = () => {
 	const { setTheme, theme } = useTheme();
@@ -15,7 +15,7 @@ const ThemeSwitcher: React.FC = () => {
 				setTheme(mode === "dark" ? "light" : "dark");
 			}}
 		>
-			{mode === "dark" ? <Sun /> : <MoonStar />}
+			{mode === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
 		</button>
 	);
 };

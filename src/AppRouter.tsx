@@ -3,8 +3,13 @@ import Layout from "./pages/layout";
 import Airdrop from "./pages/Airdrop";
 import Explorer from "./pages/Explorer";
 import Launchpad from "./pages/Launchpad";
+import Onboarding from "./pages/Onboarding";
 
 const routes = createBrowserRouter([
+	{
+		path: "/onboarding",
+		element: <Onboarding />,
+	},
 	{
 		path: "/",
 		element: <Layout />,
