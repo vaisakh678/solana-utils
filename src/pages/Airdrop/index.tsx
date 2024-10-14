@@ -2,20 +2,22 @@ import React, { useState } from "react";
 import Content from "../../components/Content";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useConnection } from "@solana/wallet-adapter-react";
+import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { toast } from "sonner";
 import { PublicKey, SolanaJSONRPCError } from "@solana/web3.js";
 import { ReloadIcon } from "@radix-ui/react-icons";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "../../components/ui/label";
 
 const Airdrop: React.FC = () => {
-	// const _ = useWallet();
+	const wallet = useWallet();
 	const { connection } = useConnection();
 	const [sol, setSol] = useState(1);
 	const [pubKey, setPubKey] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 
 	const handleRequestAirdrop = async () => {
-		if (pubKey.length < 44) {
+		if (pubKey.length !== 44) {
 			toast.warning("Invalid public key!.");
 			return;
 		}
@@ -42,10 +44,16 @@ const Airdrop: React.FC = () => {
 	};
 
 	return (
-		<Content className="flex items-center justify-center">
+		<Content className="flex items-center justify-center fade-in" key={"airdrop"}>
 			<fieldset className="w-[400px] h-[250px] flex flex-col gap-4 group" disabled={isLoading}>
 				<h1 className="">Note: This tool does not give you real $SOL or Solana tokens</h1>
 				<Input placeholder="Public key" onChange={(e) => setPubKey(e.target.value)} value={pubKey} />
+				<div className="flex items-center gap-3">
+					<Switch id="wallet-address" disabled={!wallet.publicKey} />
+					<Label htmlFor="wallet-address" className="cursor-pointer text-sm opacity-80">
+						User wallet address
+					</Label>
+				</div>
 				<div className="flex flex-col sm:flex-row gap-4">
 					<Input
 						placeholder="Sol"

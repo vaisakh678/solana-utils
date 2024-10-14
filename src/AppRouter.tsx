@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom"
 import Layout from "./pages/layout";
 import Airdrop from "./pages/Airdrop";
 import Explorer from "./pages/Explorer";
+import Launchpad from "./pages/Launchpad";
 
 const routes = createBrowserRouter([
 	{
@@ -16,6 +17,11 @@ const routes = createBrowserRouter([
 				index: true,
 				path: "explorer",
 				element: <Explorer />,
+			},
+			{
+				index: true,
+				path: "launchpad",
+				element: <Launchpad />,
 			},
 			{
 				index: true,
